@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zomato Clone</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <h1>Zomato Clone</h1>
+        <input type="text" id="search-input" placeholder="Search for restaurants..." onkeyup="searchRestaurants()">
+        <div class="cart">
+            <button onclick="viewCart()">Cart (<span id="cart-count">0</span>)</button>
+        </div>
+    </header>
+
+    <!-- Restaurant Listings -->
+    <section class="restaurant-list">
+        <div class="restaurant" id="restaurant1">
+            <img src="https://via.placeholder.com/200" alt="Restaurant 1">
+            <p class="restaurant-name">Restaurant 1</p>
+            <p class="restaurant-rating">⭐⭐⭐⭐⭐</p>
+            <button onclick="viewMenu('restaurant1')">View Menu</button>
+        </div>
+        <div class="restaurant" id="restaurant2">
+            <img src="https://via.placeholder.com/200" alt="Restaurant 2">
+            <p class="restaurant-name">Restaurant 2</p>
+            <p class="restaurant-rating">⭐⭐⭐⭐</p>
+            <button onclick="viewMenu('restaurant2')">View Menu</button>
+        </div>
+        <div class="restaurant" id="restaurant3">
+            <img src="https://via.placeholder.com/200" alt="Restaurant 3">
+            <p class="restaurant-name">Restaurant 3</p>
+            <p class="restaurant-rating">⭐⭐⭐⭐⭐</p>
+            <button onclick="viewMenu('restaurant3')">View Menu</button>
+        </div>
+    </section>
+
+    <!-- Menu Section (Hidden by default) -->
+    <section class="menu-section" id="menu-section">
+        <button onclick="closeMenu()">Back to Restaurants</button>
+        <h2 id="menu-title"></h2>
+        <div class="menu-items" id="menu-items">
+            <!-- Dynamic menu items will be added here -->
+        </div>
+    </section>
+
+    <!-- Cart Modal (Hidden by default) -->
+    <section class="cart-modal" id="cart-modal">
+        <div class="cart-items" id="cart-items">
+            <p>No items in cart</p>
+        </div>
+        <button onclick="checkout()">Proceed to Checkout</button>
+        <button onclick="closeCart()">Close</button>
+    </section>
+
+    <script src="app.js"></script>
+</body>
+</html>
