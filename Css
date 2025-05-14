@@ -1,0 +1,129 @@
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+
+/* Header Styling */
+header {
+    background-color: #e60000;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+}
+
+header input {
+    padding: 10px;
+    width: 80%;
+    border-radius: 5px;
+    border: none;
+}
+
+header .cart {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+}
+
+header .cart button {
+    background-color: #f1f1f1;
+    color: #e60000;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+/* Restaurant List */
+.restaurant-list {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.restaurant {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 200px;
+}
+
+.restaurant img {
+    max-width: 100%;
+    border-radius: 8px;
+}
+
+.restaurant-name {
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.restaurant-rating {
+    color: #f1c40f;
+}
+
+button {
+    background-color: #e60000;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #d10000;
+}
+
+/* Menu Section */
+.menu-section {
+    display: none;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.menu-items {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.cart-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.cart-items {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 400px;
+    width: 100%;
+}
+
+.cart-modal button {
+    margin-top: 10px;
+}
