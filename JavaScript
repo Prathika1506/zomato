@@ -1,0 +1,116 @@
+// Sample restaurant data (this can be expanded)
+const restaurants = {
+    restaurant1: {
+        name: "Restaurant 1",
+        menu: [
+            { id: 1, name: "Pizza", price: 300 },
+            { id: 2, name: "Burger", price: 150 },
+            { id: 3, name: "Pasta", price: 250 }
+        ]
+    },
+    restaurant2: {
+        name: "Restaurant 2",
+        menu: [
+            { id: 1, name: "Sushi", price: 500 },
+            { id: 2, name: "Ramen", price: 350 },
+            { id: 3, name: "Tempura", price: 450 }
+        ]
+    },
+    restaurant3: {
+        name: "Restaurant 3",
+        menu: [
+            { id: 1, name: "Salad", price: 200 },
+            { id: 2, name: "Soup", price: 180 },
+            { id: 3, name: "Grilled Chicken", price: 350 }
+        ]
+    }
+};
+
+// Cart to store added items
+let cart = [];
+let cartCount = 0;
+
+// Function to search restaurants
+function searchRestaurants() {
+    const searchValue = document.getElementById("search-input").value.toLowerCase();
+    const restaurantCards = document.querySelectorAll('.restaurant');
+    restaurantCards.forEach(card => {
+        const restaurantName = card.querySelector('.restaurant-name').innerText.toLowerCase();
+        if (restaurantName.includes(searchValue)) {
+            card.style.display = 'block';
+        } else {
+            card.style.display = 'none';
+        }
+    });
+}
+
+// Function to view menu
+function viewMenu(restaurantId) {
+    const menuSection = document.getElementById("menu-section");
+    const menuTitle = document.getElementById("menu-title");
+    const menuItems = document.getElementById("menu-items");
+
+    menuTitle.innerText = restaurants[restaurantId].name;
+    menuItems.innerHTML = '';
+    restaurants[restaurantId].menu.forEach(item => {
+        const menuItemDiv = document.createElement('div');
+        menuItemDiv.classList.add('menu-item');
+        menuItemDiv.innerHTML = `
+            <p>${item.name} - ₹${item.price}</p>
+            <button onclick="addToCart(${item.id}, '${item.name}', ${item.price})">Add to Cart</button>
+        `;
+        menuItems.appendChild(menuItemDiv);
+    });
+
+    menuSection.style.display = 'flex';
+}
+
+// Function to close menu section
+function closeMenu() {
+    const menuSection = document.getElementById("menu-section");
+    menuSection.style.display = 'none';
+}
+
+// Function to add item to cart
+function addToCart(id, name, price) {
+    cart.push({ id, name, price });
+    cartCount++;
+    document.getElementById("cart-count").innerText = cartCount;
+    alert(`${name} added to cart`);
+}
+
+// Function to view cart
+function viewCart() {
+    const cartModal = document.getElementById("cart-modal");
+    const cartItems = document.getElementById("cart-items");
+
+    if (cart.length === 0) {
+        cartItems.innerHTML = "<p>No items in cart</p>";
+    } else {
+        cartItems.innerHTML = "";
+        cart.forEach(item => {
+            cartItems.innerHTML += `<p>${item.name} - ₹${item.price}</p>`;
+        });
+    }
+
+    cartModal.style.display = "flex";
+}
+
+// Function to close cart
+function closeCart() {
+    const cartModal = document.getElementById("cart-modal");
+    cartModal.style.display = "none";
+}
+
+// Function to proceed to checkout
+function checkout() {
+    if (cart.length === 0) {
+        alert("Your cart is empty!");
+        return;
+    }
+    alert("Proceeding to checkout...");
+    cart = [];
+    cartCount = 0;
+    document.getElementById("cart-count").innerText = cartCount;
+    closeCart();
+}
